@@ -1,9 +1,8 @@
 import os
 import numpy as np
-from ola import *
-from colorama import init, Fore, Back, Style
+from colorama import Fore, Back, Style
 
-init()
+#init()
 
 avion = np.zeros(42, dtype=int)
 nombres = [""] * 42
@@ -59,21 +58,23 @@ def modificarAsiento():
 
 
 def mostrarAvion():
+    print(f"\n    {Fore.CYAN}--------- NORMAL ---------{Style.RESET_ALL}", end="")
     for i in range(len(avion)):
         if(i==30):
-            print("\n    __________ VIP __________")
+            print(f"\n\n    {Fore.YELLOW}{Style.BRIGHT}---------- VIP ----------{Style.RESET_ALL}{Style.BRIGHT}", end="")
         if(i % 6 == 0):
+            print("")
             print("")
         if(i % 3 == 0):
             print("   ", end="")
         if(avion[i] != 0):
-            print(f"{Fore.RED}  X {Style.RESET_ALL}", end="" )
+            print(f"{Fore.RED}{Style.BRIGHT}  X {Style.RESET_ALL}", end="" )
         else:
             print(f" {(i+1):2d} ", end="")
-    print("")
+    print("\n\n")
 
 def menu():
-    ola()
+    
     print("""  MENU
           1. Ver asientos disponibles
           2. Comprar asiento
@@ -95,6 +96,7 @@ while True:
     if opcion == "1":
         mostrarAvion()
     elif opcion == "2":
+        mostrarAvion()
         pedirDatos()
     elif opcion == "3":
         devolverAsiento()
@@ -103,6 +105,6 @@ while True:
     elif opcion == "5":
         break
             
-    input("Enter para continuar")
+    input(f"{Style.RESET_ALL}Presione {Fore.GREEN}[Enter]{Style.RESET_ALL} para continuar")
 
 print("vale vale mi waxoo 🤑🤙")
